@@ -1,5 +1,9 @@
-const log = (str: string) => {
+export const log = (str: string) => {
   console.log(str);
 };
 
-log('Hello World!');
+class A {
+  greeting = 'Hello World';
+}
+
+log(new A().greeting);
