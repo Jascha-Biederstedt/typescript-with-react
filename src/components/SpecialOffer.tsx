@@ -3,13 +3,13 @@ import React from 'react';
 import { PizzaInterface } from '../types';
 import { useStateDispatch } from './AppState';
 
-import styles from './Pizza.module.css';
+import styles from './SpecialOffer.module.css';
 
 interface Props {
   pizza: PizzaInterface;
 }
 
-const Pizza: React.FC<Props> = ({ pizza }) => {
+const SpecialOffer: React.FC<Props> = ({ pizza }) => {
   const dispatch = useStateDispatch();
 
   const handleAddToCartClick = () => {
@@ -26,7 +26,8 @@ const Pizza: React.FC<Props> = ({ pizza }) => {
   };
 
   return (
-    <li className={styles.container}>
+    <div className={styles.container}>
+      <span className={styles.special}>Special Offer</span>
       <h2>{pizza.name}</h2>
       <p>{pizza.description}</p>
       <p>{pizza.price}</p>
@@ -37,8 +38,8 @@ const Pizza: React.FC<Props> = ({ pizza }) => {
       >
         Add to Cart
       </button>
-    </li>
+    </div>
   );
 };
 
-export default Pizza;
+export default SpecialOffer;
