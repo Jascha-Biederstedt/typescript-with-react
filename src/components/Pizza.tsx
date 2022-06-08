@@ -1,28 +1,17 @@
 import React from 'react';
 
 import { PizzaInterface } from '../types';
-import { useStateDispatch } from './AppState';
+import { AddToCartProps, withAddToCart } from './AddToCart';
 
 import styles from './Pizza.module.css';
 
-interface Props {
+interface Props extends AddToCartProps {
   pizza: PizzaInterface;
 }
 
-const Pizza: React.FC<Props> = ({ pizza }) => {
-  const dispatch = useStateDispatch();
-
+const Pizza: React.FC<Props> = ({ pizza, addToCart }) => {
   const handleAddToCartClick = () => {
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: {
-        item: {
-          id: pizza.id,
-          name: pizza.name,
-          price: pizza.price,
-        },
-      },
-    });
+    addToCart({ id: pizza.id, name: pizza.name, price: pizza.price });
   };
 
   return (
@@ -41,4 +30,4 @@ const Pizza: React.FC<Props> = ({ pizza }) => {
   );
 };
 
-export default Pizza;
+export default withAddToCart(Pizza);
